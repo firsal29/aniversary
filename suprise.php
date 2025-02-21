@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffdde1;
+            color: black; /* Warna font hitam */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            padding: 20px; /* Padding dikurangi agar lebih rapi */
+            max-width: 800px; /* Lebar maksimum container */
+            margin: 0 auto; /* Pusatkan container */
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff4d6d;
+            margin-bottom: 20px;
+        }
+        .slideshow {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 100%;
+            margin: 20px auto;
+        }
+        .slides {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: none;
+            border-radius: 10px; /* Tambahkan border radius untuk foto */
+        }
+        .text {
+            font-size: 1.2em; /* Ukuran font diperkecil */
+            margin-top: 20px;
+            text-align: justify; /* Teks rata kiri-kanan */
+            line-height: 1.6; /* Jarak antar baris */
+            padding: 0 20px; /* Padding kanan dan kiri */
+        }
+        .love {
+            color: red; /* Warna merah untuk kata "love" */
+        }
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #ff1a40;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="jaz.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <div class="container">
+        <h1>Happy Anniversary 3 Tahun, Sayangku ❤</h1>
+        <div class="slideshow">
+            <img class="slides" src="poto1.jpeg" alt="Photo 1">
+            <img class="slides" src="poto2.jpeg" alt="Photo 2">
+            <img class="slides" src="poto3.jpeg" alt="Photo 3">
+            <img class="slides" src="poto4.jpeg" alt="Photo 4">
+        </div>
+        <p class="text">
+            Tiga tahun telah berlalu sejak kita memulai perjalanan ini bersama. Setiap detik, menit, dan jam yang kita lewati terasa begitu berharga. Kamu adalah alasan mengapa hari-hariku penuh warna, mengapa senyum selalu menghiasi wajahku, dan mengapa hatiku merasa begitu lengkap.
+            <br><br>
+            Kita telah melalui banyak hal bersama—tawa, air mata, kebahagiaan, dan tantangan. Tapi satu hal yang tak pernah berubah adalah cintaku padamu. Kamu adalah rumahku, tempat di mana hatiku merasa tenang dan bahagia. Setiap momen bersamamu adalah hadiah terindah yang tak ternilai.
+            <br><br>
+            Aku bersyukur bisa memilikimu dalam hidupku. Kamu mengajariku arti cinta yang tulus, kesetiaan yang tak tergoyahkan, dan kebahagiaan yang sederhana namun bermakna. Aku mencintaimu lebih dari kata-kata bisa ungkapkan, lebih dari langit bisa jangkau, dan lebih dari waktu bisa ukur.
+            <br><br>
+            Di hari istimewa ini, aku berjanji untuk terus mencintaimu, mendukungmu, dan berada di sisimu dalam setiap langkah hidup kita. Aku tak sabar untuk menciptakan lebih banyak kenangan indah bersamamu, merayakan tahun-tahun berikutnya, dan tumbuh bersama sebagai pasangan yang saling mencintai.
+            <br><br>
+            Selamat hari anniversary ke-3, sayangku. Aku mencintaimu sekarang, besok, dan selamanya. 💕 Aku <span class="love">Cinta</span> kamu selamanya. 💕
+        </p>
+        <button onclick="playMusic()" class="btn">Play Music</button>
+    </div>
+    
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slides");
+        const audio = document.getElementById("bg-music");
+        
+        function showSlides() {
+            slides.forEach(slide => slide.style.display = "none");
+            slides[slideIndex].style.display = "block";
+            slides[(slideIndex + 1) % slides.length].style.display = "block";
+            slideIndex = (slideIndex + 2) % slides.length;
+            setTimeout(showSlides, 4000);
+        }
+        showSlides();
+
+        function playMusic() {
+            audio.play();
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.addEventListener("click", function() {
+                audio.play();
+            }, { once: true });
+        });
+
+        setTimeout(() => {
+            document.querySelector(".container").innerHTML = "<h1>Terima kasih telah menjadi bagian dari hidupku! ❤</h1>";
+        }, 120000); // 2 menit
+    </script>
+</body>
+</html>
